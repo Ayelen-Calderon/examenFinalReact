@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useContextGlobal } from '../Components/utils/global.context';
-import doctor from '../imagenesPrueba/doctor.jpg';
+
 
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -14,6 +14,9 @@ const Detail = () => {
   const paramsId = useParams();
         //const navigate = useNavigate();
   const dentistIdSelected = value.find((v) => paramsId.id == v.id )
+
+console.log("soy params de details")
+  console.log(paramsId)
 
 
   return (
