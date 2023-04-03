@@ -4,17 +4,19 @@ import doctor from '../imagenesPrueba/doctor.jpg';
 
 
 const Card = ({ name, username, id }) => {
-
-
-  // const [myArray , setArray] = useState([])
-
-    localStorage.setItem('myArray', JSON.stringify([]))
-
+  const [myArray, setArray] = useState([]);
   const [dentisSelected, setDentisSelected] = useState();
-
- 
+  
+let arrayExiste =  localStorage.getItem("myArray") ? true :
+  localStorage.setItem("myArray", JSON.stringify(myArray))
 
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+
+  useEffect(() => {
+   
+    const data = JSON.parse(arrayExiste);
+    setArray(data || []);
+  }, []);
 
   useEffect(() => {
     fetch(url)
@@ -23,18 +25,18 @@ const Card = ({ name, username, id }) => {
   }, [url]);
 
   const addFav = () => {
-  
-   
- 
-    const array  = JSON.parse(localStorage.getItem("myArray"))
-    array.push(dentisSelected)
-   localStorage.setItem('myArray', JSON.stringify(array))
+    const array = JSON.parse(localStorage.getItem('myArray'));
     
+    array.push(dentisSelected);
+    localStorage.setItem('myArray', JSON.stringify(array));
+  
+    setArray(array);
+  };
 
 
+  
+  
 
- 
-  }
 
 
  
