@@ -6,9 +6,13 @@ import doctor from '../imagenesPrueba/doctor.jpg';
 const Card = ({ name, username, id }) => {
 
 
+  // const [myArray , setArray] = useState([])
+
+    localStorage.setItem('myArray', JSON.stringify([]))
+
   const [dentisSelected, setDentisSelected] = useState();
 
-  localStorage.setItem('myArray', JSON.stringify([]))
+ 
 
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
 
@@ -19,14 +23,23 @@ const Card = ({ name, username, id }) => {
   }, [url]);
 
   const addFav = () => {
-  // const array  = JSON.parse(localStorage.getItem("myArray"))
-
-   const item =  localStorage.setItem('dentistFav', JSON.stringify(dentisSelected));
-    console.log("soy una card favorita");
+  
+   
+ 
+    const array  = JSON.parse(localStorage.getItem("myArray"))
+    array.push(dentisSelected)
+   localStorage.setItem('myArray', JSON.stringify(array))
     
-//  array.push(item)
+
+
+
  
   }
+
+
+ 
+
+ 
 
   // const saveDentist = window.localStorage.getItem('dentistData');
   // if (saveDentist) {
