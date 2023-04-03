@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Link} from "react-router-dom";
 import doctor from '../imagenesPrueba/doctor.jpg';
+import { useContextGlobal } from "./utils/global.context";
+
 
 
 const Card = ({ name, username, id }) => {
-  const [myArray, setArray] = useState([]);
+
+  const {setArray} = useContextGlobal()
+
   const [dentisSelected, setDentisSelected] = useState();
-  
-let arrayExiste =  localStorage.getItem("myArray") ? true :
-  localStorage.setItem("myArray", JSON.stringify(myArray))
 
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
 
-  useEffect(() => {
-   
-    const data = JSON.parse(arrayExiste);
-    setArray(data || []);
-  }, []);
+
+
+
 
   useEffect(() => {
     fetch(url)
@@ -26,29 +25,22 @@ let arrayExiste =  localStorage.getItem("myArray") ? true :
 
   const addFav = () => {
     const array = JSON.parse(localStorage.getItem('myArray'));
+  
     
-    array.push(dentisSelected);
-    localStorage.setItem('myArray', JSON.stringify(array));
-  
-    setArray(array);
-  };
+    const existeDentista = array.find((elemento) => elemento.id === dentisSelected.id);
+    if (existeDentista) {
+      console.log('No se puede agregar dentista ya existe');
+    } else {
+     
+      array.push(dentisSelected);
+      localStorage.setItem('myArray', JSON.stringify(array));
+      setArray(array);
+    }
 
 
-  
-  
+  }
 
 
-
- 
-
- 
-
-  // const saveDentist = window.localStorage.getItem('dentistData');
-  // if (saveDentist) {
-  //   return JSON.parse(saveDentist)
-  // }else{
-  //   return[]
-  // }
 
 
   return (
@@ -72,7 +64,7 @@ let arrayExiste =  localStorage.getItem("myArray") ? true :
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
        
 
-        <button  onClick={addFav} className="favButton">Add fav</button>
+        <button  onClick={addFav} className="favButton" >Add fav</button>
     
         
     </div>
