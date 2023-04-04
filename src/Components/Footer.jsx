@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../imagenesPrueba/DH.png'
+import "../hojas-de-estilo/img-iconos.css"
 
 
 const Footer = () => {
@@ -7,7 +7,11 @@ const Footer = () => {
     <footer>
         <div className='footer'> </div>
         <p>Powered by</p>
-        <img src={logo} alt='DH-logo' />
+        <img src="/images/DH.png" alt='DH-logo' />
+        <img className='img-iconos' src="/images/ico-facebook.png"alt ="facebook"/>
+        <img className='img-iconos' src="/images/ico-instagram.png"alt ="instagram"/>
+        <img className='img-iconos' src="/images/ico-whatsapp.png"alt ="whatsapp"/>
+        <img className='img-iconos' src="/images/ico-tiktok.png"alt ="tiktok"/>
     </footer>
   )
 }

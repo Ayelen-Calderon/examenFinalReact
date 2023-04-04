@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link} from "react-router-dom";
-import doctor from '../imagenesPrueba/doctor.jpg';
+
 import { useContextGlobal } from "./utils/global.context";
 
 
@@ -12,6 +12,8 @@ const Card = ({ name, username, id }) => {
   const [dentisSelected, setDentisSelected] = useState();
 
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+
+  let favs = localStorage.getItem('myArray')
 
 
 
@@ -31,14 +33,16 @@ const Card = ({ name, username, id }) => {
     if (existeDentista) {
       console.log('No se puede agregar dentista ya existe');
     } else {
+
      
       array.push(dentisSelected);
       localStorage.setItem('myArray', JSON.stringify(array));
       setArray(array);
     }
-
-
   }
+
+
+  
 
 
 
@@ -50,7 +54,7 @@ const Card = ({ name, username, id }) => {
         <Link key={id} to={`/dentist/${id}`} >
 
         <div>
-          <img className="card-img"  src={doctor}  alt="Doctor" width={200}/>
+          <img className="card-img"  src="/images/doctor.jpg" alt="Doctor" width={200}/>
           <h3>{name}</h3>
           <h2>{username}</h2>
         </div>
