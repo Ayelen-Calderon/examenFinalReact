@@ -13,7 +13,7 @@ const Card = ({ name, username, id, showButton }) => {
 
   const url = `https://jsonplaceholder.typicode.com/users/${id}`;
 
-  let favs = localStorage.getItem('myArray')
+ 
 
 
 
@@ -59,15 +59,16 @@ const Card = ({ name, username, id, showButton }) => {
     <div className="card">
         {/* En cada card deberan mostrar en name - username y el id */}
 
-        <Link key={id} to={`/dentist/${id}`} >
+        
 
         <div>
           <img className="card-img"  src="/images/doctor.jpg" alt="Doctor" width={200}/>
           <h3>{name}</h3>
           <h2>{username}</h2>
+          <Link key={id} to={`/dentist/${id}`} > <h2>Details</h2>
+        </Link>
         </div>
 
-        </Link>
        
        
 
