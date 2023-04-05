@@ -17,7 +17,7 @@ const Home = () => {
         {/* Aqui deberias renderizar las cards */}
         {value.map((value) =>
         
-            <Card  key={value.id} name={value.name} username={value.username} id={value.id}/>
+            <Card  key={value.id} name={value.name} username={value.username} id={value.id} showButton={true}/>
           
         )}
       </div>

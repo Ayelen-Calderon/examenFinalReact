@@ -21,7 +21,7 @@ const Favs = () => {
   return (
     <div className="fav">
 
-      <button onClick={limpiarFav} >limpiar</button>
+      <button onClick={limpiarFav} >🗑️</button>
 
       <h1>Dentists Favs</h1>
 
@@ -35,7 +35,7 @@ const Favs = () => {
 
          {fav.map((fav) =>
         
-        <Card  key={fav.id} name={fav.name} username={fav.username} id={fav.id}/>
+        <Card  key={fav.id} name={fav.name} username={fav.username} id={fav.id} showButton={false}/>
       
     )}
 

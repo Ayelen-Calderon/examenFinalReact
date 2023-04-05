@@ -5,7 +5,7 @@ import { useContextGlobal } from "./utils/global.context";
 
 
 
-const Card = ({ name, username, id }) => {
+const Card = ({ name, username, id, showButton }) => {
 
   const {setArray} = useContextGlobal()
 
@@ -42,7 +42,15 @@ const Card = ({ name, username, id }) => {
   }
 
 
-  
+  const eliminarCard = () => {
+    const array = JSON.parse(localStorage.getItem("myArray"));
+    const index = array.findIndex((elemento) => elemento.id === dentisSelected.id);
+    if (index > -1) {
+      array.splice(index, 1);
+      localStorage.setItem("myArray", JSON.stringify(array));
+      setArray(array);
+    }
+  };
 
 
 
@@ -68,7 +76,13 @@ const Card = ({ name, username, id }) => {
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
        
 
-        <button  onClick={addFav} className="favButton" >Add fav</button>
+        {showButton ?
+      <button onClick={addFav} className="favButton">
+        ✨ Add fav ✨
+      </button> :  <button onClick={eliminarCard } className="favButton">
+        eliminar
+      </button>
+      }
     
         
     </div>

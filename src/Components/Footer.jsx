@@ -1,18 +1,23 @@
 import React from 'react'
-import "../hojas-de-estilo/img-iconos.css"
+import "../hojas-de-estilo/footer.css"
 
 
 const Footer = () => {
   return (
     <footer>
-        <div className='footer'> </div>
-        <p>Powered by</p>
-        <img src="/images/DH.png" alt='DH-logo' />
-        <img className='img-iconos' src="/images/ico-facebook.png"alt ="facebook"/>
-        <img className='img-iconos' src="/images/ico-instagram.png"alt ="instagram"/>
-        <img className='img-iconos' src="/images/ico-whatsapp.png"alt ="whatsapp"/>
-        <img className='img-iconos' src="/images/ico-tiktok.png"alt ="tiktok"/>
-    </footer>
+   <div className='footer-paragraph'><p >Powered by</p></div> 
+
+    <div className='footer-logo-and-icons'>
+      <img src="/images/DH.png" alt="" width={200}/>
+     
+      <div>
+        <a href="/#"><img className='footer-icons' src="/images/ico-facebook.png" alt="" /></a>
+        <a href="/#"><img className='footer-icons' src="/images/ico-instagram.png" alt="" /></a>
+        <a href="/#"><img className='footer-icons' src="/images/ico-whatsapp.png" alt="" /></a>
+        <a href="/#"><img className='footer-icons' src="/images/ico-tiktok.png" alt="" /></a>
+      </div>
+    </div>
+</footer>
   )
 }
 

@@ -16,13 +16,13 @@ const Form = () => {
 
   const handleChange = (event) => {
     setInput({
-      ...input, 
+       ...input, 
       [event.target.name] : event.target.value 
     })
   }
 
-  const funcionRebelde = (event) => {
-    console.log('entre a handlesubmit');
+  const enviarForm = (event) => {
+   
     event.preventDefault()
     if(input.inputName.indexOf(" ") !== 0
       && nameValidation.test(input.inputName)
@@ -30,23 +30,24 @@ const Form = () => {
       && (emailValidation).test(input.inputEmail)
       )
     {
-      console.log(input.inputName);
-      console.log(input.inputEmail);
-      setShow(true)
+     
+      setShow(`Gracias ${input.inputName}, te contactaremos cuando antes vía mail`)
       setErr(false)
-      console.log('Se validó handleSubmit');
+      setInput({ inputName: "", inputEmail: "" }); 
+
     } else {
       setErr(true)
       setShow(false)
-      console.log('No pasaron las validaciones de handleSubmit');
+   
     }
+    
   }
   
 
   return (
 
     <div>
-      <form onSubmit={funcionRebelde}>
+      <form onSubmit={enviarForm}>
         <br />
         <label>Please enter your name: </label>
         <input name='inputName' type="text" placeholder="Name" value={input.inputName} onChange={handleChange}/>
@@ -54,11 +55,11 @@ const Form = () => {
         <label>Please enter your email: </label>
         <input name='inputEmail' type="text" placeholder="myemail@email.com" value={input.inputEmail} onChange={handleChange}/>
         <br />
-        <button>Enviar</button>
+        <button>Send</button>
         <br />
       </form>
-      {err ? <h3>Por favor verifique su información nuevamente</h3> : null}
-      {show ? <h3>Gracias {input.inputName}, te contactaremos cuando antes vía mail</h3> : null}
+      {err ? (<h3>Por favor verifique su información nuevamente</h3>) 
+      : show ?  (<h3>{show}</h3>) : null}
     </div>
   );
 };
