@@ -7,11 +7,14 @@ import Contact from "./Routes/Contact";
 import Detail from "./Routes/Detail";
 import Favs from "./Routes/Favs";
 import Home from "./Routes/Home";
+import { useContextGlobal } from "./Components/utils/global.context";
 
 
 function App() {
+
+  const{stateTheme} = useContextGlobal()
   return (
-      <div className="App">
+      <div className={stateTheme.t ? 'App' : 'dark'}>
         <Navbar/>  
         <Routes>
             <Route path={routes.home} element={<Home/>} />

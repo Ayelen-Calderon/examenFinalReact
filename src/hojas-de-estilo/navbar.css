@@ -1,10 +1,21 @@
+nav{
+  display: flex;
+  width: 80vw;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+}
+
 .navbar{
     display: flex;
     flex-direction: row;
     background-color: rgb(230, 228, 228);
-    height: 6vw;
+    height: 45px;
+    width: 99vw;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    margin: 0%;
 
   }
   .navbar nav{
@@ -58,3 +69,37 @@
     border-radius: 5px;
 
   }
+
+
+  .dark .navbar{
+   
+    background-color: rgb(46, 44, 44);
+    color:aliceblue ;
+  
+  }
+  .dark h3{
+   
+    color:aliceblue ;
+  
+  }
+  
+ .dark .back-btn{
+    color: #f4f3f3;
+    background-color: rgb(46, 44, 44);
+
+  }
+  .navbar nav .theme-btn{
+    background-color:#f4f3f3;
+  }
+
+  .dark .navbar nav .theme-btn:hover{
+    filter: brightness(150%);
+  }
+  .back-btn:hover{
+    color: rgb(238, 227, 78);
+  }
+  .dark a .nav-h3:hover{
+    color: rgb(238, 227, 78);
+  }
+  
+  

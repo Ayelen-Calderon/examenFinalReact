@@ -6,7 +6,7 @@ import { useContextGlobal } from '../Components/utils/global.context';
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-  const {value} = useContextGlobal();
+  const {apiState} = useContextGlobal();
 
          
 
@@ -15,7 +15,7 @@ const Home = () => {
       <h1>Home</h1>
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}
-        {value.map((value) =>
+        {apiState.map((value) =>
         
             <Card  key={value.id} name={value.name} username={value.username} id={value.id} showButton={true}/>
           

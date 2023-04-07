@@ -19,7 +19,7 @@ const Favs = () => {
   const limpiarFav = () =>{setArray(localStorage.setItem("myArray", JSON.stringify([])))}
 
   return (
-    <div className="fav">
+    <div className="fav vista">
 
       <button onClick={limpiarFav} >🗑️</button>
 

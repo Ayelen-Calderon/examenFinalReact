@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
 
@@ -31,7 +32,7 @@ const Form = () => {
       )
     {
      
-      setShow(`Gracias ${input.inputName}, te contactaremos cuando antes vía mail`)
+      setShow(`Gracias ${input.inputName}, te contactaremos cuanto antes vía mail`)
       setErr(false)
       setInput({ inputName: "", inputEmail: "" }); 
 
@@ -46,18 +47,25 @@ const Form = () => {
 
   return (
 
-    <div>
-      <form onSubmit={enviarForm}>
-        <br />
-        <label>Please enter your name: </label>
-        <input name='inputName' type="text" placeholder="Name" value={input.inputName} onChange={handleChange}/>
-        <br />
-        <label>Please enter your email: </label>
-        <input name='inputEmail' type="text" placeholder="myemail@email.com" value={input.inputEmail} onChange={handleChange}/>
-        <br />
+    <div className="contenedor-formulario">
+      <form className="formulario" onSubmit={enviarForm}>
+
+       <div className="input">
+          <label>Please enter your name: </label>
+          <input name='inputName' type="text" placeholder="Name" 
+          value={input.inputName} onChange={handleChange}/>
+        </div>
+
+        <div className="input">
+          <label>Please enter your email: </label>
+          <input name='inputEmail' type="text" placeholder="myemail@email.com"
+          value={input.inputEmail} onChange={handleChange}/>
+        </div>
+        
         <button>Send</button>
-        <br />
+
       </form>
+
       {err ? (<h3>Por favor verifique su información nuevamente</h3>) 
       : show ?  (<h3>{show}</h3>) : null}
     </div>

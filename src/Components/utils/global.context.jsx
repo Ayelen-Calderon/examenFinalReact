@@ -1,11 +1,48 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 
-export const initialState = {theme: "", data: []}
+
 
 
 export const ContextGlobal = createContext(undefined);
 
+const theme = {
+  dark: {
+      t: false,   
+  },
+  
+  light: {
+      t: true,   
+     }
+}
+
+const initialState = theme.light ;
+const initialStateApi = []
+
+function reducer(state, action) {
+  switch (action.type) {
+      case 'SWITCH_DARK':
+          return theme.dark
+      case 'SWITCH_LIGHT':
+          return theme.light
+      default:
+          throw new Error()
+     
+  }
+}
+const apiReducer = (state, action) =>{
+  switch(action.type){
+    case 'GET_API':
+    return action.payload
+    default:
+      throw new Error()
+  }
+}
+
 export const ContextProvider = ({ children }) => {
+
+
+  const [stateTheme, dispatchTheme] = useReducer(reducer, initialState)
+  const [apiState, dispatchApi] = useReducer(apiReducer , initialStateApi)
 
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
 
@@ -15,25 +52,26 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
    
-    const data = JSON.parse(arrayExiste);
-    setArray(data || []);
+    const data = JSON.parse(arrayExiste) || [];
+    setArray(data);
   }, []);
 
   
 
   const url = 'https://jsonplaceholder.typicode.com/users';
 
-    const [value, setValue] = useState([])
+
 
     useEffect(() => {
         fetch(url)
         .then(res => res.json())
-        .then(data => setValue(data))
+        .then(data => dispatchApi({type : 'GET_API', payload: data}))
+       
     }, [])
 
 
   return (
-    <ContextGlobal.Provider value={{value, setValue, myArray, setArray}}>
+    <ContextGlobal.Provider value={{apiState, myArray, setArray, stateTheme, dispatchTheme}}>
       {children}
     </ContextGlobal.Provider>
   );

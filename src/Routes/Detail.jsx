@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useContextGlobal } from '../Components/utils/global.context';
+import "../hojas-de-estilo/detail.css"
 
 
 
@@ -8,21 +9,21 @@ import { useContextGlobal } from '../Components/utils/global.context';
 
 const Detail = () => {
 
-  const {value} = useContextGlobal();
+  const {apiState} = useContextGlobal();
  
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   const paramsId = useParams();
-        //const navigate = useNavigate();
-  const dentistIdSelected = value.find((v) => paramsId.id == v.id )
+      
+  const dentistIdSelected = apiState.find((v) => paramsId.id == v.id )
 
 console.log("soy params de details")
   console.log(paramsId)
 
 
   return (
-    // <button onClick={() => navigate('/')}>Volver al Home</button>
+   
 
-    <>
+    <div className='vista'>
       <h1>Detail Dentist {dentistIdSelected.id} </h1>
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
@@ -41,7 +42,7 @@ console.log("soy params de details")
         </tr>
       </table>
 
-    </>
+    </div>
   )
 }
 
