@@ -29,13 +29,13 @@ const Navbar = () => {
     <nav> 
      
       {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
-      <button className="back-btn" onClick={() => navigate(-1)}>↩</button>
+      <button className="back-btn" onClick={() => navigate(-1)} title='Back' >↩</button>
       <Link  to={routes.home}><h3 className='nav-h3' >Home</h3></Link>
       <Link  to={routes.contact}><h3 className='nav-h3'>Contact</h3></Link>
       <Link  to={routes.favs}><h3 className='nav-h3'>Favs</h3></Link>
 
       {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
-      <button className="theme-btn"  onClick={changeTheme } >{stateTheme.t? '🌙' : '🌞'} </button>
+      <button className="theme-btn"  onClick={changeTheme }  >{stateTheme.t? '🌙'  : '🌞'} </button>
     </nav>
     </div>
   )

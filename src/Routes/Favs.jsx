@@ -1,6 +1,7 @@
 import Card from "../Components/Card";
 import { useContextGlobal } from "../Components/utils/global.context";
-//import "../hojas-de-estilo/fav.css"
+import { AiOutlineClear } from "react-icons/ai";
+import "../hojas-de-estilo/fav.css"
 
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -21,7 +22,7 @@ const Favs = () => {
   return (
     <div className="fav vista">
 
-      <button onClick={limpiarFav} >🗑️</button>
+      <button className="button-clear-favs" onClick={limpiarFav} title="Clear Favs"><AiOutlineClear/></button>
 
       <h1>Dentists Favs</h1>
 
@@ -35,7 +36,12 @@ const Favs = () => {
 
          {fav.map((fav) =>
         
-        <Card  key={fav.id} name={fav.name} username={fav.username} id={fav.id} showButton={false}/>
+        <Card  key={fav.id} 
+          name={fav.name} 
+          username={fav.username}
+          id={fav.id} 
+          favorito={true}
+         />
       
     )}
 

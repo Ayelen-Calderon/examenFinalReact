@@ -17,7 +17,12 @@ const Home = () => {
         {/* Aqui deberias renderizar las cards */}
         {apiState.map((value) =>
         
-            <Card  key={value.id} name={value.name} username={value.username} id={value.id} showButton={true}/>
+            <Card  key={value.id} 
+              name={value.name} 
+              username={value.username} 
+              id={value.id} 
+              favorito ={false}
+            />
           
         )}
       </div>

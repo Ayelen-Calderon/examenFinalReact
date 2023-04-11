@@ -40,9 +40,9 @@ const apiReducer = (state, action) =>{
 
 export const ContextProvider = ({ children }) => {
 
-
   const [stateTheme, dispatchTheme] = useReducer(reducer, initialState)
   const [apiState, dispatchApi] = useReducer(apiReducer , initialStateApi)
+
 
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
 

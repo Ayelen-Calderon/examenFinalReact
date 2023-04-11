@@ -1,0 +1,11 @@
+.button-clear-favs{
+    cursor: pointer;
+    font-size: 25px;
+    color: rgb(240, 37, 37);
+    border-radius: 100%;
+    border: none;
+
+}
+.button-clear-favs:hover{
+    background-color: rgb(212, 215, 215);
+}
